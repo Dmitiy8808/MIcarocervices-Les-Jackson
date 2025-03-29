@@ -1,0 +1,11 @@
+{
+    "profiles": {
+      "CommandsService": {
+        "commandName": "Project",
+        "environmentVariables": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+      }
+    }
+  }
+  

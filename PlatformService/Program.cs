@@ -1,18 +1,36 @@
 using Microsoft.EntityFrameworkCore;
+using PlatformService.AsyncDataServices;
 using PlatformService.Data;
+using PlatformService.SyncDataService;
+using PlatformService.SyncDataService.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbContext>(options =>
+if (builder.Environment.IsDevelopment())
+{
+    Console.WriteLine("--> Using InMem Db");
+    builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseInMemoryDatabase("InMem"));
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+}
+else
+{
+    Console.WriteLine("--> Using SqlServer");
+    var connectionString = builder.Configuration.GetConnectionString("PlatformsConn");
+    builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString));
+}
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
+builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
+
+
 
 var app = builder.Build();
 
@@ -23,7 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 
 app.UseAuthorization();
@@ -32,7 +50,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 //Seeding test data
-PrepDb.PrepPopulation(app);
+PrepDb.PrepPopulation(app, builder.Environment.IsProduction());
 
 app.Run();
 
