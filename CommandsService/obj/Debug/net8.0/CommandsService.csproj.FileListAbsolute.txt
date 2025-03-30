@@ -137,3 +137,7 @@ C:\APPs\CSharp\Microservices-Les-Jackson\CommandsService\obj\Debug\net8.0\ref\Co
 C:\APPs\CSharp\Microservices-Les-Jackson\CommandsService\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\APPs\CSharp\Microservices-Les-Jackson\CommandsService\bin\Debug\net8.0\appsettings.Production.json
 C:\APPs\CSharp\Microservices-Les-Jackson\CommandsService\bin\Debug\net8.0\RabbitMQ.Client.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\CommandsService\bin\Debug\net8.0\Google.Protobuf.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\CommandsService\bin\Debug\net8.0\Grpc.Core.Api.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\CommandsService\bin\Debug\net8.0\Grpc.Net.Client.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\CommandsService\bin\Debug\net8.0\Grpc.Net.Common.dll

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PlatformService.AsyncDataServices;
 using PlatformService.Data;
 using PlatformService.SyncDataService;
+using PlatformService.SyncDataService.Grpc;
 using PlatformService.SyncDataService.Http;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,8 +30,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
 builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
-
-
+builder.Services.AddGrpc();
 
 var app = builder.Build();
 
@@ -46,8 +46,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-// Перенаправление запросов на контроллеры
+// Перенаправление запросов на крнечные точки
 app.MapControllers();
+app.MapGrpcService<GrpcPlatformService>();
+app.MapGet("/protos/platforms.proto", async context => 
+{
+    await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
+});
 
 //Seeding test data
 PrepDb.PrepPopulation(app, builder.Environment.IsProduction());

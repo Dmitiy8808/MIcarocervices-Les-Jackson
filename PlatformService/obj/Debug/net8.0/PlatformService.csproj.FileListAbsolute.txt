@@ -312,3 +312,10 @@ C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\obj\Debug\net8.0\refint
 C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\obj\Debug\net8.0\PlatformService.pdb
 C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\obj\Debug\net8.0\PlatformService.genruntimeconfig.cache
 C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\obj\Debug\net8.0\ref\PlatformService.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\bin\Debug\net8.0\Google.Protobuf.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\bin\Debug\net8.0\Grpc.Core.Api.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\bin\Debug\net8.0\Grpc.Net.Client.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+C:\APPs\CSharp\Microservices-Les-Jackson\PlatformService\bin\Debug\net8.0\Grpc.Net.Common.dll
